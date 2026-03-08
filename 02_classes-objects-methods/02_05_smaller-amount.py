@@ -22,19 +22,26 @@ class Ingredient:
         self.name = "expired " + self.name
 
     def __add__(self, other):
-        """Combines two ingredients."""
+        """
+        Combines two ingredients.
+        The new amount will be the minimum of the two original amounts.
+        """
         new_name = self.name + other.name
-        return Ingredient(name=new_name, amount=1)
+        
+        # Logique de sélection du montant le plus petit
+        new_amount = min(self.amount, other.amount)
+        
+        return Ingredient(name=new_name, amount=new_amount)
     
     def __str__(self):
         return f"{self.name} ({self.amount})"
     
     def __repr__(self):
-        return f"Ingredient(name={self.name}, amount={self.amount})"
+        return f"Ingredient(name='{self.name}', amount={self.amount})"
 
 
 if __name__ == '__main__':
     c = Ingredient("carrot", 5)
     p = Ingredient("pea", 4)
     s = c + p
-    print(s)
+    print(s)  # Devrait afficher : carrotpea (4)
