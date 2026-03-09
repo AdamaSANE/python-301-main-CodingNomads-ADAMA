@@ -169,3 +169,101 @@
 # s = c + p
 # print(s)  # OUTPUT: carrotpea (1)
 
+# class Ingredient:
+#     """Models an Ingredient."""
+
+#     def __init__(self, name, amount):
+#         self.name = name
+#         self.amount = amount
+
+#     def expire(self):
+#         """Expires the ingredient item."""
+#         print(f"whoops, these {self.name} went bad...")
+#         self.name = "expired " + self.name
+
+#     def __str__(self):
+#         return f"You have {self.amount} {self.name}."
+
+# class Spice(Ingredient):
+#     """Models a spice, which is a type of ingredient."""
+#     def grind(self):
+#         """Grinds the spice."""
+#         print(f"You have now {self.amount} of ground {self.name}.")
+#     def soupon(self):
+#         """Sprinkles the spice on the soup."""
+#         print(f"You sprinkle {self.amount} of {self.name} on the soup.")
+
+#     def expire(self):
+#         if self.name == "salt":
+#             print("salt never expires! ask the sea!")
+#         else:
+#             print(f"your {self.name} has expired. it's probably still good.")
+#             self.name = "old " + self.name
+# # p = Ingredient('peas', 12)
+# # print(p)  # OUTPUT: You have 12 peas.
+# # s = Spice('salt', 200)
+# # print(s)  # OUTPUT: You have 200 salt.
+# # s.expire()
+# # print(s)  # OUTPUT: You have 200 expired salt.
+
+# # c = Spice('carrots', 3)
+# # p = Spice('pepper', 20)
+
+# # p.grind()  # OUTPUT: You have now 20 of ground pepper.
+# # c.soupon()  # OUTPUT: You sprinkle 3 of carrots on the soup.
+
+# s = Spice("salt", 200)
+# print(s)  # OUTPUT: You have 200 salt.
+# s.expire()  # OUTPUT: salt never expires! ask the sea!
+# print(s)  # OUTPUT: You have 200 salt.
+
+# i = Ingredient("salt", 200)
+# print(i)  # OUTPUT: You have 200 salt.
+# i.expire()  # OUTPUT: whoops, these salt went bad...
+# print(i)  # OUTPUT: You have 200 expired salt.
+
+# class Vegetable(Ingredient):
+#     """Models a vegetable, which is a type of ingredient."""
+#     def __setattr__(self, name, value):
+#         return super().__setattr__(name, value)
+#     def cook(self):
+#         """Cooks the vegetable."""
+#         print(f"You cook the {self.name}.")
+
+
+# class Ingredient:
+#     """Models an Ingredient."""
+
+#     def __init__(self, name, amount):
+#         self.name = name
+#         self.amount = amount
+
+
+# class Spice(Ingredient):
+#     """Models a spice to flavor your food."""
+
+#     def __init__(self, name, amount, taste):
+#         super().__init__(name, amount)
+#         self.taste = taste
+
+# c = Ingredient("carrots", 2)
+# p = Spice("pepper", 20, "hot")
+
+
+#class Example:
+#    pass
+
+#print(dir(Example()))
+# OUTPUT:
+# ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__',
+#  '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__',
+#  '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+#  '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+
+#print(dir(object()))
+# OUTPUT:
+# ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__',
+#  '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__',
+#  '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+#  '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+
