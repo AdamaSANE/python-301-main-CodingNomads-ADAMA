@@ -25,3 +25,12 @@ class Spice(Ingredient):
     def grind(self):
         print(f"You have now {self.amount} of ground {self.name}.")
 
+class Vegetable(Ingredient):
+    """Models a vegetable."""
+
+    def cook(self):
+        print(f"You cook the {self.name}.")
+
+    def expire(self):
+        print(f"your {self.name} is getting soft...")
+        self.name = "old " + self.name

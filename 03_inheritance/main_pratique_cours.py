@@ -267,3 +267,111 @@
 #  '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
 #  '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
 
+
+class Stove:
+	"""Represente une cuisiniere avec un certain nombre de feux."""
+
+	def __init__(self, num_burners):
+		self.num_burners = num_burners
+		self.on = False
+
+	def turn_on(self):
+		self.on = True
+		print("Stove is now on")
+
+	def turn_off(self):
+		self.on = False
+		print("Stove is now off")
+
+
+class Sink:
+	"""Represente un evier pouvant faire couler de l'eau."""
+
+	def __init__(self, num_faucets):
+		self.num_faucets = num_faucets
+		self.water_on = False
+
+	def turn_water_on(self):
+		self.water_on = True
+		print("Water is now on")
+
+	def turn_water_off(self):
+		self.water_on = False
+		print("Water is now off")
+
+
+class Fridge:
+	"""Represente un frigo qui stocke les aliments."""
+
+	def __init__(self, num_shelves, capacity):
+		self.num_shelves = num_shelves
+		self.capacity = capacity
+		self.contents = []
+
+	def add_food(self, food):
+		self.contents.append(food)
+		print(f"Added {food} to the fridge")
+
+	def remove_food(self, food):
+		self.contents.remove(food)
+		print(f"Removed {food} from the fridge")
+
+
+class Countertop:
+	"""Represente un plan de travail sur lequel poser des objets."""
+
+	def __init__(self, length, width):
+		self.length = length
+		self.width = width
+		self.items = []
+
+	def add_item(self, item):
+		self.items.append(item)
+		print(f"Added {item} to the countertop")
+
+	def remove_item(self, item):
+		self.items.remove(item)
+		print(f"Removed {item} from the countertop")
+
+
+class Kitchen:
+	"""Compose plusieurs objets pour modeliser une cuisine complete."""
+
+	def __init__(self, stove, sink, fridge, countertop):
+		# La cuisine ne re-implemente pas ces objets: elle les regroupe.
+		self.stove = stove
+		self.sink = sink
+		self.fridge = fridge
+		self.countertop = countertop
+
+	def prepare_breakfast(self):
+		# On coordonne les composants pour simuler une vraie tache de cuisine.
+		self.fridge.add_food("Eggs")
+		self.countertop.add_item("Frying pan")
+		self.sink.turn_water_on()
+		self.stove.turn_on()
+		print("Breakfast preparation started.")
+
+
+class TinyBathroom:
+	"""Exemple de reutilisation d'un composant dans une autre piece."""
+
+	def __init__(self, sink):
+		self.sink = sink
+
+
+if __name__ == "__main__":
+	# Chaque objet represente une partie specialisee de la cuisine.
+	stove = Stove(4)
+	sink = Sink(2)
+	fridge = Fridge(3, 200)
+	countertop = Countertop(10, 5)
+
+	# La cuisine est construite par composition de ces objets.
+	kitchen = Kitchen(stove, sink, fridge, countertop)
+	kitchen.prepare_breakfast()
+
+	# On peut aussi reemployer un composant ailleurs.
+	bathroom_sink = Sink(1)
+	bathroom = TinyBathroom(bathroom_sink)
+	print(f"Bathroom faucets: {bathroom.sink.num_faucets}")
