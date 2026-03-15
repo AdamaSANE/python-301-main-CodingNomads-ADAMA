@@ -6,3 +6,10 @@
 # print(list_[1])
 #
 # This raises and exception that needs to be handled.
+
+list_ = ["hello world!"]
+
+try:
+    print(list_[1])
+except IndexError as e:
+    print(f"Erreur : index hors limites — {e}")
